@@ -1,0 +1,34 @@
+<app-navbar1></app-navbar1>
+<div class="content">
+   <!-- // <img src='../../../assets/College-students-studying.jpeg'> -->
+<div class="loginn">
+   <h1>WELCOME TO <br><span class="i_learn">i-Learn</span></h1>
+<p>Login to Continue please</p>
+<h1 *ngIf="error">Username of Password Incorrect</h1>
+<form id="login" (ngSubmit)="onSubmit()">
+    <div class="input-div">
+        <label for="username">Username: </label>
+        <input
+            id="username"
+            type="text"
+            name="username"
+            maxlength="50"
+            required
+            [(ngModel)]="username"
+        />
+    </div><br>
+    <div class="input-div">
+        <label for="password">Password: </label>
+        <input
+            id="password"
+            type="password"
+            name="password"
+            minlength="8"
+            required
+            [(ngModel)]="password"
+        />
+    </div><br>
+    <input class="input" type="submit" value="Login"/>
+</form>
+</div>
+</div>

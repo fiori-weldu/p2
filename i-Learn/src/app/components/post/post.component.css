@@ -1,0 +1,17 @@
+.post{
+    width: 800px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: solid 2px lightgray;
+    padding: 10px;
+    background: rgba(8, 235, 57, 0.179);
+}
+.contain{
+    background: rgba(8, 235, 57, 0.179);
+}
+.liked{
+    border: solid 2px #39a2db;
+}
+.not-liked{
+    border: solid 2px #596666;
+}
