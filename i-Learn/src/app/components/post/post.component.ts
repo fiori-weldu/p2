@@ -10,21 +10,25 @@ import {Post} from '../../Post';
 export class PostComponent implements OnInit {
 @Input() post: Post={
   id:0,
-  user:'',
+  username:'',
   content:'',
   likes:0
 };
 liked: boolean=false;
-likePost(): void{
-  if(this.liked){
-    this.liked=!this.liked
-    this.post.likes--;
+
+  likePost(): void{
+    if(this.liked){
+      this.liked = !this.liked;
+      if(this.post.likes){
+        this.post.likes--;
+      }
+    } else {
+      this.liked = !this.liked;
+      if(this.post.likes){
+        this.post.likes++;
+      }
+    }
   }
-  else{
-    this.liked=!this.liked;
-    this.post.likes++;
-  }
-}
   constructor() { }
 
   ngOnInit(): void {

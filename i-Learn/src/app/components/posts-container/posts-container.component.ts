@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { POSTS } from 'src/app/mock-posts';
+import { PostService } from 'src/app/services/post.service';
 import { Post } from 'src/app/Post';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -9,14 +10,17 @@ import { Post } from 'src/app/Post';
   styleUrls: ['./posts-container.component.css']
 })
 export class PostsContainerComponent implements OnInit {
-   posts: Post[]=POSTS;
-   addPost(post: Post):void{
-     this.posts.push(post);
+  posts: Observable<Post[]> = new Observable<Post[]>();
+   addPost(post:Post):void{
+    this.postService.addPost(post);
+    this.posts = this.postService.subject;
+    
    }
-  constructor() { }
+  constructor( private postService:PostService) { }
 
   ngOnInit(): void {
-
+    this.postService.getPosts();
+    this.posts = this.postService.subject;
   }
 
 }

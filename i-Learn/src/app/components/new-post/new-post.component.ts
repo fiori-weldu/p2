@@ -1,5 +1,5 @@
 import { Component, OnInit ,Output, EventEmitter} from '@angular/core';
-
+import {  UserService} from "../../services/user.service";
 import {  Post} from "../../Post";
 
 @Component({
@@ -9,11 +9,12 @@ import {  Post} from "../../Post";
 })
 export class NewPostComponent implements OnInit {
   @Output() onAddPost: EventEmitter<Post> = new EventEmitter
-  user: string='user'
+  username: string='user'
   content:string=" "
   likes:number=0;
+  date:Date=new Date();
   error:boolean=false;
-  constructor() { }
+  constructor(private userService:UserService) { }
  onSubmit():void{
    if(!this.content){
      this.error=true;
@@ -21,9 +22,10 @@ export class NewPostComponent implements OnInit {
    }
    const newPost:Post={
      id:0,
-     user:this.user,
+     username:this.userService.user.username ,
      content:this.content,
-     likes:this.likes
+     likes:this.likes,
+     date: new Date()
    }
    this.onAddPost.emit(newPost);
    this.content='';

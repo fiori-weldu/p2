@@ -1,4 +1,5 @@
 <div class="post-container" >
    <app-new-post (onAddPost)="addPost($event)"></app-new-post>
-   <app-post *ngFor="let post of posts" [post]="post"></app-post> 
+   <app-post *ngFor="let post of (posts | async)" [post]="post"></app-post>
+   <!-- <app-post *ngFor="let post of posts" [post]="post"></app-post>  -->
 </div>
